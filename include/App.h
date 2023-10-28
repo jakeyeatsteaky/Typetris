@@ -3,13 +3,13 @@
 #include "SDL2/SDL.h"
 #include <memory>
 
+#include "RendererAPI.h"
 #include "enumerations.h"
-#include "RendererInterface.h"
 
 class App
 {
 public:
-	App();
+	App(); 
 	~App();
 	void Setup();
 	void Input();
@@ -22,13 +22,10 @@ public:
 	bool IsRunning();
 	void CreateRenderer();
 
-    SDL_Renderer* sdl_renderer;
-    SDL_Window* sdl_window;
-
 private:
+	Renderer* m_renderer;
 	bool m_isRunning = false;
-	std::unique_ptr<RendererInterface> m_renderer;
-	RENDERER_API m_rendererAPI;
+
 };
 
 
