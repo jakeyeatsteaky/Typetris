@@ -52,12 +52,26 @@ void Renderer::Input() const
 
 void Renderer::Render() const
 {
-
+	SDL_UpdateWindowSurface(m_window);
 }
 
 void Renderer::Update()
 {
+	uint32_t* pixels;
+	pixels = static_cast<uint32_t*>(m_surface->pixels);
+	int width = m_surface->w;
+	int height = m_surface->h;
+	uint32_t color = SDL_MapRGB(
+		m_surface->format, 
+		0xFF, 
+		0xFF, 
+		0x00);
 
+	for(int x = 0; x < width; x++) {
+		for (int y = 0; y < height; y++) {
+			pixels[y * width + x] = color;
+		}
+	}
 }
 
 bool Renderer::InitSuccess() const 

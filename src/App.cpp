@@ -41,12 +41,6 @@ void App::Input()
                 if (event.key.keysym.sym == SDLK_ESCAPE)
                     m_isRunning = false;
                 break;
-            case SDL_MOUSEWHEEL:
-                if (event.wheel.y > 0) 
-                    std::cout << "wheel forward\n";                                    
-                else if (event.wheel.y < 0) 
-                    std::cout << "wheel backward\n";                    
-                break;
         }
 
     }
