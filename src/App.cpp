@@ -4,24 +4,14 @@
 
 #include <assert.h>
 
-class Renderer_GL;
-class Renderer_Vulk;
-class Renderer_DX;
-
 App::App() :
-    m_isRunning(false),
-    m_rendererAPI(Renderer_API_Open_GL) 
+    m_isRunning(false)
 {
-    if (m_rendererAPI == Renderer_API_Open_GL){
-        std::cout << "YOU NEED TO WRITE THE SetupVertexLayouts function again because you accidentally deleted it :(\n";
-        assert(false);
-    }
-
     CreateRenderer();
 }
 
 App::~App() {
-    
+    delete m_renderer;
 }
 
 
@@ -50,12 +40,6 @@ void App::Input()
             case SDL_KEYDOWN:
                 if (event.key.keysym.sym == SDLK_ESCAPE)
                     m_isRunning = false;
-                break;
-            case SDL_MOUSEWHEEL:
-                if (event.wheel.y > 0) 
-                    std::cout << "wheel forward\n";                                    
-                else if (event.wheel.y < 0) 
-                    std::cout << "wheel backward\n";                    
                 break;
         }
 
@@ -87,8 +71,9 @@ void App::SetIsRunning(bool isRunning) {
     m_isRunning = isRunning;
 }
 
-void App::CreateRenderer() {
-    m_renderer = RendererInterface::MakeRenderer(m_rendererAPI);
+void App::CreateRenderer() 
+{
+    m_renderer = new Renderer();
 }
 
 
