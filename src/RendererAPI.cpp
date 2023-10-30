@@ -10,6 +10,8 @@ Renderer::~Renderer()
 {
 	SDL_FreeSurface(m_surface);
 	SDL_DestroyWindow(m_window);
+	delete[] frontBuffer;
+	delete[] backBuffer;
 }
 
 void Renderer::Init() 
@@ -57,10 +59,10 @@ void Renderer::Render() const
 
 void Renderer::Update()
 {
-	uint32_t* pixels;
-	pixels = static_cast<uint32_t*>(m_surface->pixels);
+	frontBuffer = static_cast<uint32_t*>(m_surface->pixels);
 	int width = m_surface->w;
 	int height = m_surface->h;
+
 	uint32_t color = SDL_MapRGB(
 		m_surface->format, 
 		0xFF, 
@@ -69,9 +71,11 @@ void Renderer::Update()
 
 	for(int x = 0; x < width; x++) {
 		for (int y = 0; y < height; y++) {
-			pixels[y * width + x] = color;
+			frontBuffer[y * width + x] = color;
 		}
 	}
+
+	
 }
 
 bool Renderer::InitSuccess() const 

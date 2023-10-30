@@ -30,6 +30,8 @@ private:
 
 	SDL_Window* m_window;
 	SDL_Surface* m_surface;
+	uint32_t* frontBuffer;
+	uint32_t* backBuffer;
 	bool m_initSuccess;
 
 };

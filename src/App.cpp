@@ -12,6 +12,13 @@ App::App() :
 
 App::~App() {
     delete m_renderer;
+    for(auto& items : m_objects)
+        delete items;
+}
+
+App* App::GetInstance() 
+{
+    return this;
 }
 
 
@@ -25,6 +32,8 @@ void App::Setup()
 
     SetIsRunning(true);
 
+    Rect* rect1 = new Rect(100, 100, 100, 100, 0x00ff0000);
+    m_objects.push_back(rect1);
     std::cout << "App successfully Set Up\n";
 }
 
