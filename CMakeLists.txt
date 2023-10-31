@@ -18,7 +18,7 @@ add_executable(Typetris main.cpp ${SOURCES})
 
 if(WIN32)
     file(GLOB_RECURSE HEADER_LIST CONFIGURE_DEPENDS "${PROJECT_SOURCE_DIR}/include/*.h")
-    target_sources(3DRenderer PRIVATE ${HEADER_LIST})
+    target_sources(Typetris PRIVATE ${HEADER_LIST})
 
     set(SDL2_DIR "C:/Program Files/SDL2")
     #set(CMAKE_PREFIX_PATH "C:/Program Files/glew-2.2.0")
@@ -39,9 +39,9 @@ find_package(SDL2 REQUIRED)
 
 include_directories(${SDL2_INCLUDE_DIRS})
 
-    target_compile_options(Typetris PRIVATE -fdiagnostics-color=always -Wall -Werror -std=c++17 -g)
 if(MSVC)
     target_link_libraries(Typetris ${SDL2_LIBRARIES})
 else()
+target_compile_options(Typetris PRIVATE -fdiagnostics-color=always -Wall -Werror -std=c++17 -g)
 target_link_libraries(Typetris ${SDL2_LIBRARIES})
 endif()

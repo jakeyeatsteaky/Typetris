@@ -1,7 +1,11 @@
 #ifndef RENDERER_API_H
 #define RENDERER_API_H
 
+#ifdef __linux__
 #include <SDL2/SDL.h>
+#else
+#include <SDL.h>
+#endif
 
 #include "enumerations.h"
 

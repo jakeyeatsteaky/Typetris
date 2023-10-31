@@ -10,8 +10,8 @@ Renderer::~Renderer()
 {
 	SDL_FreeSurface(m_surface);
 	SDL_DestroyWindow(m_window);
-	delete[] frontBuffer;
-	delete[] backBuffer;
+	//delete[] frontBuffer;
+	//delete[] backBuffer;
 }
 
 void Renderer::Init() 

@@ -1,6 +1,11 @@
 #ifndef APP_H
 #define APP_H
+#ifdef __linux__
 #include "SDL2/SDL.h"
+#else
+#include "SDL.h"
+#endif
+
 #include <memory>
 #include <vector>
 

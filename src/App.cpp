@@ -1,6 +1,5 @@
 #include "App.h"
 #include <iostream>
-#include "SDL2/SDL.h"
 
 #include <assert.h>
 
